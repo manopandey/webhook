@@ -1,15 +1,12 @@
 from flask import Flask, request
+from subprocess import call
 
 app = Flask(__name__)
 
 @app.route('/webhook', methods = ['POST'])
 def webhook():
-    return(str(request.json))
-
-
-
-
-
+    call(["git", "pull"])
+    return("Done")
 
 
 if __name__ == '__main__':
