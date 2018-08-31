@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/', methods = ['POST'])
 def webhook():
-    os.system('( cd /var/www/html/'request.json['repository']['name']' ; sudo git pull )')
+    os.system('( cd /var/www/html/'+request.json['repository']['name']+' ; sudo git pull )')
     return(str(request.json['repository']['clone_url']))
 
 
