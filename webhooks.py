@@ -3,10 +3,9 @@ from subprocess import call
 
 app = Flask(__name__)
 
-@app.route('/webhook', methods = ['POST'])
+@app.route('/', methods = ['POST'])
 def webhook():
-    call(["git", "pull"])
-    return("Done")
+    return(str(request.json))
 
 
 if __name__ == '__main__':
