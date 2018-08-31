@@ -5,12 +5,9 @@ app = Flask(__name__)
 
 @app.route('/', methods = ['POST'])
 def webhook():
-    print("https://github.com/"+request.json['repository']['full_name'])
-    print(request.json['repository']['clone_url'])
-    #identify which repo
-    #check if repo exist --> clone if repo does not exist
-    #do a git pull in specified repo
-    #run pm2 deploy script in repo
+    #repo_url = request.json['repository']['clone_url']
+    call(["sudo git pull", "/var/www/html/"+request.json['repository']['name']])
+    call(["sudo pm2 restart Webhook"])
     return Response(status=202, mimetype='application/json')
 
 
