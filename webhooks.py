@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/', methods = ['POST'])
 def webhook():
-    print(request.Payload)
+    print(request.json.repository.name)
     return Response(status=202, mimetype='application/json')
 
 
