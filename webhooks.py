@@ -5,10 +5,8 @@ app = Flask(__name__)
 
 @app.route('/', methods = ['POST'])
 def webhook():
-    repo_url = request.json['repository']['clone_url']
-    print(repo_url)
-    call(['./var/www/html/webhook/deploy.sh'])
-    return Response(status=202, mimetype='application/json')
+    print(request.json['repository']['clone_url'])
+    return(str(request.json['repository']['clone_url']))
 
 
 if __name__ == '__main__':
