@@ -5,7 +5,6 @@ app = Flask(__name__)
 
 @app.route('/', methods = ['POST'])
 def webhook():
-    print(request.json['repository']['clone_url'])
     return(str(request.json['repository']['clone_url']))
 
 
