@@ -8,6 +8,7 @@ def webhook():
     print("https://github.com/"+request.json['repository']['full_name'])
     print(request.json['repository']['clone_url'])
     #identify which repo
+    #check if repo exist --> clone if repo does not exist
     #do a git pull in specified repo
     #run pm2 deploy script in repo
     return Response(status=202, mimetype='application/json')
